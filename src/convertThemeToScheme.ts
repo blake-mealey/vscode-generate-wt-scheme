@@ -10,6 +10,8 @@ export function convertThemeToScheme(theme: any, name: string) {
     brightMagenta: "brightPurple",
   });
 
+  const exclude = ["border"];
+
   const scheme = {
     name: name,
     background: colors["editor.background"],
@@ -38,6 +40,7 @@ export function convertThemeToScheme(theme: any, name: string) {
 
           return [key, value];
         })
+        .filter(([key]) => !exclude.includes(key))
     ),
   };
 
