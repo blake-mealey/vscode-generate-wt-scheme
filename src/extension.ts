@@ -1,5 +1,4 @@
 import * as vscode from "vscode";
-import { parse as parseJson } from "json5";
 import { convertThemeToScheme } from "./convertThemeToScheme";
 
 async function promptThemeName() {
@@ -16,7 +15,11 @@ async function getActiveColorTheme(): Promise<any | undefined> {
     return;
   }
 
-  return parseJson(editor.document.getText());
+  // Uncomment lines that are commented so that if we are missing values, we will get the
+  // defaults instead
+  const themeText = editor.document.getText().replace(/\/\//g, "");
+
+  return JSON.parse(themeText);
 }
 
 async function replaceEditorText(text: string) {
