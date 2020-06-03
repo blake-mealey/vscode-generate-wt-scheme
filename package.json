@@ -4,6 +4,10 @@
   "displayName": "Generate Windows Terminal Scheme",
   "description": "Generate Windows Terminal color schemes from your VSCode themes",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blake-mealey/vscode-generate-wt-scheme.git"
+  },
   "engines": {
     "vscode": "^1.45.0"
   },
