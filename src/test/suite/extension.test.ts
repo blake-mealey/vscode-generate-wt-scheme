@@ -1,15 +1,26 @@
-import * as assert from 'assert';
+import * as assert from "assert";
+import * as vscode from "vscode";
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-// import * as myExtension from '../extension';
+suite("Extension Test Suite", () => {
+  vscode.window.showInformationMessage("Start all tests.");
 
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+  test("Generates successfully", async () => {
+    const themeName = "test";
 
-	test('Sample test', () => {
-		assert.equal(-1, [1, 2, 3].indexOf(5));
-		assert.equal(-1, [1, 2, 3].indexOf(0));
-	});
+    await vscode.commands.executeCommand(
+      "extension.generate-wt-scheme.generate-scheme",
+      themeName
+    );
+
+    const editor = vscode.window.activeTextEditor;
+    assert.notStrictEqual(editor, undefined);
+
+    const editorText = editor!.document.getText();
+
+    const scheme = JSON.parse(editorText);
+    assert.strictEqual(scheme.name, themeName);
+
+    const clipboardText = await vscode.env.clipboard.readText();
+    assert.deepStrictEqual(clipboardText, editorText);
+  });
 });
