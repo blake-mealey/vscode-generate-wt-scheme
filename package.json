@@ -3,6 +3,7 @@
   "publisher": "blake-mealey",
   "displayName": "Generate Windows Terminal Scheme",
   "description": "Generate Windows Terminal color schemes from your VSCode themes",
+  "icon": "images/icon.png",
   "version": "0.0.1",
   "repository": {
     "type": "git",
