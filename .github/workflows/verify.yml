@@ -25,5 +25,5 @@ jobs:
       - name: Build
         run: npm run compile
 
-      - name: Test
-        run: npm test
+      # - name: Test
+      #   run: npm test
