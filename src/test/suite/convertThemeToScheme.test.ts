@@ -27,6 +27,8 @@ suite("Convert", () => {
         "terminal.ansiWhite": "#ffffff",
         "terminal.ansiYellow": "#addb67",
         "terminal.selectionBackground": "#1b90dd4d",
+        "terminal.foreground": "#cccccc", // should use the terminal foreground if available
+        "terminal.background": null, // should ignore the terminal background if its value is null
         "terminalCursor.background": "#234d70",
       },
     };
@@ -37,7 +39,7 @@ suite("Convert", () => {
     assert.deepStrictEqual(scheme, {
       name,
       background: "#011627",
-      foreground: "#d6deeb",
+      foreground: "#cccccc",
       cursorColor: "#80a4c2",
       black: "#011627",
       blue: "#82aaff",

@@ -19,7 +19,7 @@ export function convertThemeToScheme(theme: any, name: string) {
     cursorColor: colors["editorCursor.foreground"],
     ...Object.fromEntries(
       Object.entries(colors)
-        .filter(([key]) => key.startsWith("terminal."))
+        .filter(([key, value]) => key.startsWith("terminal.") && !!value)
         .map(([key, value]) => {
           // remove key prefixes
           key = key.split(".")[1];
