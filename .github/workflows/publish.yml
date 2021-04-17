@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: Publish all packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release with semantic-release
+        run: npm run release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}

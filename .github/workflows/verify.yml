@@ -1,0 +1,30 @@
+name: Verify
+
+on: pull_request
+
+jobs:
+  verify:
+    name: Verify all packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run compile
+
+      - name: Test
+        run: npm test
