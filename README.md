@@ -23,5 +23,5 @@ Once it completes, the result will be automatically copied to your clipboard.
 Now open your WT settings file (`Ctrl+,` in WT by default), and paste the JSON into the `schemes` array.
 
 See the
-[docs](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/profile-settings)
-for more how to use WT color schemes.
+[docs](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes)
+for more info on using WT color schemes.
