@@ -1,16 +1,22 @@
 import { camelCase } from "change-case";
 
+const ansiPrefix = "ansi";
+
+const replacements = Object.entries({
+  magenta: "purple",
+  brightMagenta: "brightPurple",
+});
+
+const exclude = [
+  "border",
+  "dropBackground",
+  "findMatchBackground",
+  "findMatchHighlightBackground",
+  "tab",
+];
+
 export function convertThemeToScheme(theme: any, name: string) {
   const colors = theme.colors as Record<string, string>;
-
-  const ansiPrefix = "ansi";
-
-  const replacements = Object.entries({
-    magenta: "purple",
-    brightMagenta: "brightPurple",
-  });
-
-  const exclude = ["border"];
 
   const scheme = {
     name: name,

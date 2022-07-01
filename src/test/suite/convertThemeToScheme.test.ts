@@ -30,6 +30,11 @@ suite("Convert", () => {
         "terminal.foreground": "#cccccc", // should use the terminal foreground if available
         "terminal.background": null, // should ignore the terminal background if its value is null
         "terminalCursor.background": "#234d70",
+        "terminal.border": "#abcdef",
+        "terminal.dropBackground": "#abcdef", // should ignore the following values
+        "terminal.findMatchBackground": "#abcdef",
+        "terminal.findMatchHighlightBackground": "#abcdef",
+        "terminal.tab": "#abcdef",
       },
     };
 
