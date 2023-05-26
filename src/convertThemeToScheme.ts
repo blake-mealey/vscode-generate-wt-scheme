@@ -2,17 +2,32 @@ import { camelCase } from "change-case";
 
 const ansiPrefix = "ansi";
 
-const replacements = Object.entries({
+const replacements: Record<string, string> = {
   magenta: "purple",
   brightMagenta: "brightPurple",
-});
+};
 
-const exclude = [
-  "border",
-  "dropBackground",
-  "findMatchBackground",
-  "findMatchHighlightBackground",
-  "tab",
+const include = [
+  "black",
+  "blue",
+  "cyan",
+  "green",
+  "purple",
+  "red",
+  "white",
+  "yellow",
+  "brightBlack",
+  "brightBlue",
+  "brightCyan",
+  "brightGreen",
+  "brightPurple",
+  "brightRed",
+  "brightWhite",
+  "brightYellow",
+  "background",
+  "foreground",
+  "selectionBackground",
+  "cursorColor",
 ];
 
 export function convertThemeToScheme(theme: any, name: string) {
@@ -34,9 +49,9 @@ export function convertThemeToScheme(theme: any, name: string) {
           }
 
           // replace keys that have different names
-          const replacement = replacements.find(([k]) => k === key);
+          const replacement = replacements[key];
           if (replacement) {
-            key = replacement[1];
+            key = replacement;
           }
 
           // chop off alpha channel from values
@@ -46,7 +61,7 @@ export function convertThemeToScheme(theme: any, name: string) {
 
           return [key, value];
         })
-        .filter(([key]) => !exclude.includes(key))
+        .filter(([key]) => include.includes(key))
     ),
   };
 

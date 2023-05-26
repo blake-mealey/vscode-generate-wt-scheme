@@ -35,6 +35,8 @@ suite("Convert", () => {
         "terminal.findMatchBackground": "#abcdef",
         "terminal.findMatchHighlightBackground": "#abcdef",
         "terminal.tab": "#abcdef",
+        "terminal.hoverHighlightBackground": "#abcdef",
+        "terminal.inactiveSelectionBackground": "#abcdef",
       },
     };
 
